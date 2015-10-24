@@ -96,7 +96,7 @@ public class DbHelper
                 sql = "insert into " + TABLE_RESULTS_NAME  + " ( " +
                         WORD  + " , " + TEXTS_NUMBS +  " , " + DATE_TIME + " , " + TEXTS_COUNT + " ) " +
                         " values " + " ( " + "'" + item.getWord() + "'" + " , " +
-                        "'" + item.getTextBlocksNumbs() + "'" + " , " +
+                        "'" + item.getTextBlockNumb() + "'" + " , " +
                         time + " , " + item.getTextBlockCount() + " ); ";
                 
                 stmt.executeUpdate(sql);
@@ -123,7 +123,7 @@ public class DbHelper
                      item = new ItemWord();
                      item.setWord( rs.getString( WORD ) );
                      item.setTextBlockCount( rs.getInt(TEXTS_COUNT));
-                     item.setArrayTextBlockCount( rs.getString(TEXTS_NUMBS ) );
+                     item.setTextBlockNumb(rs.getString(TEXTS_NUMBS ) );
                      
                      resultList.add( item );
                 }
@@ -149,7 +149,7 @@ public class DbHelper
                      item = new ItemWord();
                      item.setWord( rs.getString( WORD ) );
                      item.setTextBlockCount( rs.getInt(TEXTS_COUNT));
-                     item.setArrayTextBlockCount( rs.getString(TEXTS_NUMBS ) );
+                     item.setTextBlockNumb(rs.getString(TEXTS_NUMBS ) );
                      
                      resultList.add( item );
                 }

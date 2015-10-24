@@ -138,8 +138,10 @@ public class StringAnalysis
                     {
                         item = new ItemWord();
                         item.setWord( word );
+                        item.setTextBlockCount(textBlockNumb);
+                        item.setTextBlockNumb(textBlockNumb); 
                        // item.setCountMatches( Constants.INITIAL_COUNT_MATCHES );  //  the number of mathes is equal 1
-                        item.addTextBlockCount( textBlockNumb );  // this word there is in current textblock
+                       // item.addTextBlockCount( textBlockNumb );  // this word there is in current textblock
              
                         // add full information about word in map
                         map.put(word, item );
@@ -147,8 +149,10 @@ public class StringAnalysis
                 else
                     {
                         item = (ItemWord) map.get( word ); // get the word
+                        item.setTextBlockCount(textBlockNumb);
+                        item.setTextBlockNumb(textBlockNumb);
                         //item.incrementCountMatches(); // increment the number of mathes
-                        item.addTextBlockCount( textBlockNumb ); // this word there is in current textblock
+                       // item.addTextBlockCount( textBlockNumb ); // this word there is in current textblock
                         map.put(word, item ); // update information about word in map
                     }
             }

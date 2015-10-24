@@ -23,6 +23,13 @@ public class ItemWord
             }
         }
         
+        public void setTextBlockNumb ( int num )
+        {
+            if ( !textBlockNumb.contains( num + "" ))
+            {
+                textBlockNumb += num + " , ";
+            }
+        }
         
         
         public void addTextBlockCount( int numTextBlock )
@@ -32,7 +39,7 @@ public class ItemWord
                  if (arrayTextBlockCount[ numTextBlock - 1 ] == 0 )
                  {
                      textBlockCount++;
-                     textBlockNumb += numTextBlock + " , ";
+                     //textBlockNumb += numTextBlock + " , ";
                      arrayTextBlockCount[ numTextBlock - 1 ] = numTextBlock;
                  }
                  
@@ -75,11 +82,19 @@ public class ItemWord
          
          return value;
     }
+
+    public void setTextBlockNumb(String textBlockNumb) {
+        this.textBlockNumb = textBlockNumb;
+    }
     
     
 
-    public void setTextBlockCount(int textBlockCount) {
-        this.textBlockCount = textBlockCount;
+    public void setTextBlockCount(int num ) 
+    {
+        if ( !textBlockNumb.contains( num + "" ))
+            {
+                textBlockCount++;
+            }
     }
 
     public void setArrayTextBlockCount( String strNumbs )
