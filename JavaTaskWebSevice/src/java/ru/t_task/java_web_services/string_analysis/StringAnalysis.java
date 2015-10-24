@@ -92,12 +92,7 @@ public class StringAnalysis
             }
        
             resultList = listItems.subList(0, size ); // we need to get first 20 items or all list
-       }
-       
-       for ( ItemWord it : resultList)
-       {
-           System.out.println( it.getWord() + "\t" + it.getTextBlockCount() );
-       }   
+       }  
     }
     
     private class ItemComarator implements Comparator<ItemWord>

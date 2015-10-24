@@ -8,12 +8,15 @@ public class ItemWord
         private String word; 
         
         private int textBlockCount;
+        
+        private String textBlockNumb;
        
         private int [] arrayTextBlockCount = new int[Constants.TEXT_BLOCK_COUNT]; // in which textblocks there is this word
         
         public ItemWord()
         {
             textBlockCount = 0;
+            textBlockNumb = "";
             for ( int i = 0; i < Constants.TEXT_BLOCK_COUNT; i++ )
             {
                 arrayTextBlockCount[i] = 0;
@@ -29,6 +32,7 @@ public class ItemWord
                  if (arrayTextBlockCount[ numTextBlock - 1 ] == 0 )
                  {
                      textBlockCount++;
+                     textBlockNumb += numTextBlock + " , ";
                      arrayTextBlockCount[ numTextBlock - 1 ] = numTextBlock;
                  }
                  
@@ -86,6 +90,11 @@ public class ItemWord
             int index = Integer.parseInt( value.replace(" ", "") );
             arrayTextBlockCount[ index - 1 ] = index;
         }
+    }
+
+    public String getTextBlockNumb() 
+    {
+        return textBlockNumb.substring(0 , textBlockNumb.length() - 2 );
     }
     
     

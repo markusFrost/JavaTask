@@ -1,16 +1,21 @@
 
 package ru.t_task.java_web_services;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import ru.t_task.java_web_services.db_helper.DbHelper;
 import ru.t_task.java_web_services.models.ItemWord;
 
+
+
 @WebService(serviceName = "StringAnalysis")
 public class StringAnalysis {
-
+    
     @WebMethod(operationName = "stringProcessing")
     public List<ItemWord> stringProcessing ( 
             @WebParam(name = "text1") String text1 , 
@@ -27,9 +32,14 @@ public class StringAnalysis {
         list = stringAnalysis.getResultList();
                     
         DbHelper dbHelper = new DbHelper();       
-        dbHelper.addResult( list );       
+       // dbHelper.addResult( list );       
         dbHelper.closeConnection();
         
         return list;
+        
+
+
     }
+    
+   
 }
