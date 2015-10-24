@@ -47,3 +47,13 @@
 {
     text-align: center;
 }
+
+.input-error
+{
+    border: 1px solid red;
+}
+
+.input-msg
+{
+    border: 1px solid black;
+}

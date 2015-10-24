@@ -43,20 +43,46 @@ public class StringAnalysisServlet extends HttpServlet {
         {
            //int num1 = Integer.parseInt( request.getParameter("num1") );
             
-             String text1 = "Привет! dream dream dream dream Меня зовут Андрей. And  I very  work work work work like to &&& java-applications!";
+            /* String text1 = "Привет! dream dream dream dream Меня зовут Андрей. And  I very  work work work work like to &&& java-applications!";
         String text2 = "Привет! Меня зовут Андрей. And develop I very like to develop java-applications!";
         String text3 = "Привет! Меня  dream dream whiteMonk dream dream зовут Андрей. And develop I very  work work work work like to develop java-applications!";
         String text4 = "Привет! Меня зовут Андрей. And develop I 1234 very like to develop java-applications!";
         String text5 = "Привет! Меня  whiteMonk dream Applications dream dream dream  work work work work зовут Андрей. And  I very like to  java-applications! work dream";
-        
-            List<ItemWord> list = stringProcessing(text1, text2, text3, text4, text5);
-           
-            String value = "Результат расчётов : " +  list.size();
+        */
             
+            String text1 = "", text2 = "", text3 = "", text4 = "", text5 = "";
+            
+            text1 = request.getParameter("info_text1");
+            text2 = request.getParameter("info_text2");
+            text3 = request.getParameter("info_text3");
+            text4 = request.getParameter("info_text4");
+            text5 = request.getParameter("info_text5");
+            
+             text1 = "Привет! dream dream dream dream Меня зовут Андрей. And  I very  work work work work like to &&& java-applications!";
+         text2 = "Привет! Меня зовут Андрей. And develop I very like to develop java-applications!";
+         text3 = "Привет! Меня  dream dream whiteMonk dream dream зовут Андрей. And develop I very  work work work work like to develop java-applications!";
+         text4 = "Привет! Меня зовут Андрей. And develop I 1234 very like to develop java-applications!";
+         text5 = "Привет! Меня  whiteMonk dream Applications dream dream dream  work work work work зовут Андрей. And  I very like to  java-applications! work dream";
+       
+            /* 
+         список проблем 
+         1) после удачи - стираются предложения
+         2) после неудачи не стираются результаты
+         3) нужно добавить сообщение отображающее ошибки
+         */
+            if ( text1.length() != 0 && text2.length() != 0 && text3.length() != 0 &&
+                    text4.length() != 0 && text5.length() != 0 )
+            {
+            List<ItemWord> list = stringProcessing(text1, text2, text3, text4, text5);
+ 
             request.setAttribute("message", list);
+            }
+            
+            // сделать сохранение значений что если текст
             
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
+            
         }
     }
     

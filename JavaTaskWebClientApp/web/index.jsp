@@ -7,7 +7,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Тестовое задание</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+
+</head>
 <body>
     <!--  <h1>
     <% out.println("");%></h1>
@@ -27,32 +32,32 @@
 -->
 <div id="block-content">
     <div class="row">
-            <form method="POST" action="StringAnalysisServlet">
+            <form id="form_submit" method="POST" action="StringAnalysisServlet">
         <div class="col-sm-8 col-sm-offset-3">
             <ul id="info-form">
                 <li>
                     <label for="info_text1">Текст 1</label>
-                    <textarea  name="info_text1"></textarea>
+                    <textarea id="info_text1" class="input-msg" name="info_text1"></textarea>
                 </li>
                 <!--  -->
                 <li>
                     <label for="info_text2">Текст 2</label>
-                    <textarea  name="info_text2"></textarea>
+                    <textarea id="info_text2" class="input-msg" name="info_text2"></textarea>
                 </li>
                 <!--  -->
                 <li>
                     <label for="info_text3">Текст 3</label>
-                    <textarea  name="info_text3"></textarea>
+                    <textarea id="info_text3" class="input-msg" name="info_text3"></textarea>
                 </li>
                 <!--  -->
                 <li>
                     <label for="info_text4">Текст 4</label>
-                    <textarea  name="info_text4"></textarea>
+                    <textarea id="info_text4" class="input-msg" name="info_text4"></textarea>
                 </li>
                 <!--  -->
                 <li>
                     <label for="info_text5">Текст 5</label>
-                    <textarea  name="info_text5"></textarea>
+                    <textarea id="info_text5" class="input-msg" name="info_text5"></textarea>
                 </li>
                 <!--  -->
 
@@ -66,7 +71,7 @@
     
 
      <% request.setAttribute("message1", null); %>
-     <p style="color: white;">
+     <p id="message-error" style="color: white;">
         <%= request.getAttribute("message1")  %></p>
 
     <div class="row">
