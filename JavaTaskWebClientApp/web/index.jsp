@@ -38,8 +38,8 @@
      //String value1 = (String) request.getAttribute( value );
      
      if ( value == null )
-     {   
-       return "  123";
+     {          
+       return "";
      }
      else
      {
@@ -124,6 +124,13 @@
                                             }%>                 
                     </tbody>
                 </table>
+                    
+                     <% 
+                        if ( list != null && list.size() == 0 )
+                        {
+                     %> 
+                     <div style="text-align: center;" class="alert alert-info" role="alert">Нет слов которые встретились хотя бы в двух текстах!</div>
+                     <% } %>
 
             </div>
         </div>

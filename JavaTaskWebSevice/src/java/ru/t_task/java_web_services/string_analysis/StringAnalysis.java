@@ -82,7 +82,7 @@ public class StringAnalysis
        
        Collections.sort(listItems, new ItemComarator() );  // sort list by textblock count
        
-       if ( listItems.size() > 0 && listItems.get(0).getTextBlockCount() > 1 )
+      /* if ( listItems.size() > 0 && listItems.get(0).getTextBlockCount() > 1 )
            // если есть слова которые встречаются минимум в двух текстах
        {      
          int size = listItems.size();
@@ -92,7 +92,26 @@ public class StringAnalysis
             }
        
             resultList = listItems.subList(0, size ); // we need to get first 20 items or all list
-       }  
+       }  */
+       
+        int size = listItems.size();
+        
+       if (  size > 0 )
+       {
+          if ( size > Constants.RESULT_VALUES_COUNT )
+          {
+              size = Constants.RESULT_VALUES_COUNT;
+          }
+           int countItems = 0;
+           for ( int i = 0; i < size; i++ )
+           {
+               if ( listItems.get(i).getTextBlockCount() > 1 )
+               {
+                   countItems++;
+               }
+           }
+           resultList = listItems.subList(0, countItems ); 
+       }
     }
     
     private class ItemComarator implements Comparator<ItemWord>
