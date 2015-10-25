@@ -58,12 +58,12 @@ public class StringAnalysisServlet extends HttpServlet {
             text4 = request.getParameter("info_text4");
             text5 = request.getParameter("info_text5");
             
-             text1 = "Привет! dream dream dream dream Меня зовут Андрей. And  I very  work work work work like to &&& java-applications!";
+           /*  text1 = "   Привет! dream dream dream dream Меня зовут Андрей. And  I very  work work work work like to &&& java-applications!    ";
          text2 = "Привет! Меня зовут Андрей. And develop I very like to develop java-applications!";
          text3 = "Привет! Меня  dream dream whiteMonk dream dream зовут Андрей. And develop I very  work work work work like to develop java-applications!";
          text4 = "Привет! Меня зовут Андрей. And develop I 1234 very like to develop java-applications!";
          text5 = "Привет! Меня  whiteMonk dream Applications dream dream dream  work work work work зовут Андрей. And  I very like to  java-applications! work dream";
-       
+       */
             /* 
          список проблем 
          1) после удачи - стираются предложения
@@ -76,6 +76,13 @@ public class StringAnalysisServlet extends HttpServlet {
             List<ItemWord> list = stringProcessing(text1, text2, text3, text4, text5);
  
             request.setAttribute("message", list);
+            
+            request.setAttribute("text1", text1 );
+            request.setAttribute("text2", text2 );
+            request.setAttribute("text3", text3 );
+            request.setAttribute("text4", text4 );
+            request.setAttribute("text5", text5 );
+            
             }
             
             // сделать сохранение значений что если текст

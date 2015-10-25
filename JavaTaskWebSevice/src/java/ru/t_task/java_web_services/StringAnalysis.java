@@ -32,7 +32,7 @@ public class StringAnalysis {
         list = stringAnalysis.getResultList();
                     
         DbHelper dbHelper = new DbHelper();       
-       // dbHelper.addResult( list );       
+        dbHelper.addResult( list );       
         dbHelper.closeConnection();
         
         return list;
