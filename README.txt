@@ -1,2 +1,2 @@
-Среда разработки - NetBeans
-СУБД - phpMyAdmin + MySql
+РЎСЂРµРґР° СЂР°Р·СЂР°Р±РѕС‚РєРё - NetBeans
+РЎРЈР‘Р” - phpMyAdmin + MySql
