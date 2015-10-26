@@ -32,7 +32,7 @@ public class StringProcessing
         this.text5 = text5;
         
         
-        //Initialize map that are stored key - word and value -  how many times it occurs and in which textblocks
+        //Initialize map that are stored key - word, number texts and count texts
         map = new HashMap<>();
         
         this.resultList = new ArrayList<>();
@@ -69,7 +69,7 @@ public class StringProcessing
        }
        
        // first of all we need to sort words by name
-        Collections.sort(listKeys);
+        Collections.sort(listKeys , new WordStringComarator() );
 
         ArrayList<ItemWord> listItems = new ArrayList<>();
         ItemWord item;
@@ -80,20 +80,8 @@ public class StringProcessing
            listItems.add( item );
        }
        
-       Collections.sort(listItems, new ItemComarator() );  // sort list by textblock count
-       
-      /* if ( listItems.size() > 0 && listItems.get(0).getTextBlockCount() > 1 )
-           // если есть слова которые встречаются минимум в двух текстах
-       {      
-         int size = listItems.size();
-         if ( size > Constants.RESULT_VALUES_COUNT )
-            {
-                size = Constants.RESULT_VALUES_COUNT;
-            }
-       
-            resultList = listItems.subList(0, size ); // we need to get first 20 items or all list
-       }  */
-       
+       Collections.sort(listItems, new ItemComarator() );  // sort list by texts count
+
         int size = listItems.size();
         
        if (  size > 0 )
@@ -120,7 +108,6 @@ public class StringProcessing
         @Override
         public int compare(ItemWord item1, ItemWord item2) 
         {
-             // меньше -1  больше 1  равно 0
            if ( item1.getTextBlockCount() > item2.getTextBlockCount() )
            {
                return -1;
@@ -135,12 +122,22 @@ public class StringProcessing
            }
         }   
     }
+    
+    private class WordStringComarator implements Comparator<String>
+    {
+        @Override
+        public int compare(String o1, String o2) 
+        {
+           return ( o1.toLowerCase().compareTo( o2.toLowerCase()) );
+        }
+  
+    }
 
     private void fillMap ( String text, int textBlockNumb  )
     {       
          String reg = "[а-яА-ЯёЁa-zA-Z0-9]{3,}";
          Pattern p = Pattern.compile( reg );
-         Matcher m = p.matcher( text );
+         Matcher m = p.matcher( text ); // use regEx to find words in texts
          
          ItemWord item;
          
@@ -148,8 +145,7 @@ public class StringProcessing
          while(m.find())
             {
                 String word =  m.group(); //get curremt word
-               // word = word.toLowerCase();
-               // if ( !map.containsKey( word ) ) 
+
                 String key =  getMapContainKey( word ); // map can store this word with another case
                 if ( key != null) { word = key; } // if in map there is already this word
                 
@@ -159,19 +155,16 @@ public class StringProcessing
                         item.setWord( word );
                         item.setTextBlockCount(textBlockNumb);
                         item.setTextBlockNumb(textBlockNumb); 
-                       // item.setCountMatches( Constants.INITIAL_COUNT_MATCHES );  //  the number of mathes is equal 1
-                       // item.addTextBlockCount( textBlockNumb );  // this word there is in current textblock
-             
+           
                         // add full information about word in map
                         map.put(word, item );
                     }
                 else
                     {
-                        item = (ItemWord) map.get( word ); // get the word
+                        item = (ItemWord) map.get( word ); 
                         item.setTextBlockCount(textBlockNumb);
                         item.setTextBlockNumb(textBlockNumb);
-                        //item.incrementCountMatches(); // increment the number of mathes
-                       // item.addTextBlockCount( textBlockNumb ); // this word there is in current textblock
+
                         map.put(word, item ); // update information about word in map
                     }
             }
@@ -179,11 +172,12 @@ public class StringProcessing
     
     private String getMapContainKey(String word )
             {
+                // if there is word in map ( ignore cases )
                  for ( String key : map.keySet() ) 
                  {
                      if ( key.equalsIgnoreCase(word) )
                      {
-                         return key;
+                         return key; // return this word
                      }          
                  }
                  return null;

@@ -14,29 +14,10 @@
 
 </head>
 <body>
-    <!--  <h1>
-    <% out.println("");%></h1>
-
-<form method="POST" action="StringAnalysisServlet">
-    <span>Текст1 :</span>
-    &nbsp;
-    <input type="text" name="text1" />
-    <br>
-    <br>
-    <input type="submit" value="Поиск пересечений" />
-    <br>
-    <br></form>
-
-<p>
-    <%= request.getAttribute("message") %></p>
--->
-
 
 <%! 
   String getText( String value )
  {
-     //String value1 = (String) request.getAttribute( value );
-     
      if ( value == null )
      {          
        return "";

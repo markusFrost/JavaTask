@@ -11,6 +11,12 @@ $( document ).ready( function ()
                         $("#msgError3").hide();
                         $("#msgError4").hide();
                         $("#msgError5").hide();
+                        
+                        $('#info_text1').val( $('#info_text1').val().trim() );
+                        $('#info_text2').val( $('#info_text2').val().trim() );
+                         $('#info_text3').val( $('#info_text3').val().trim() );
+                         $('#info_text4').val( $('#info_text4').val().trim() );
+                         $('#info_text5').val( $('#info_text5').val().trim() );
 
                         //start search empty text fields and fields 
                         //where text length greate than 1000
@@ -30,7 +36,7 @@ $( document ).ready( function ()
                        }
                        else
                        {
-                            $('#info_text1').val( $('#info_text1').val().trim() );
+                            
                             $('#info_text1').attr("class" , "input-msg" );
                             $("#msgError1").hide();
                        }
@@ -51,7 +57,7 @@ $( document ).ready( function ()
                        }
                        else
                        {
-                            $('#info_text2').val( $('#info_text2').val().trim() );
+                            
                             $('#info_text2').attr("class" , "input-msg" );
                             $("#msgError2").hide();
                        }
@@ -72,7 +78,7 @@ $( document ).ready( function ()
                        }
                        else
                        {
-                            $('#info_text3').val( $('#info_text3').val().trim() );
+                           
                             $('#info_text3').attr("class" , "input-msg" );
                             $("#msgError3").hide();
                        }
@@ -93,7 +99,7 @@ $( document ).ready( function ()
                        }
                        else
                        {
-                            $('#info_text4').val( $('#info_text4').val().trim() );
+                            
                             $('#info_text4').attr("class" , "input-msg" );
                             $("#msgError4").hide();
                        }
@@ -114,20 +120,20 @@ $( document ).ready( function ()
                        }
                        else
                        {
-                            $('#info_text5').val( $('#info_text5').val().trim() );
+                            
                             $('#info_text5').attr("class" , "input-msg" );
                             $("#msgError5").hide();
                        }
 
                        if ( isFormSubmit )
                        {
-                            $('#form_submit').unbind('submit') ;
-                            $("#table-result").css( "visibility", "visible" );
+                            $('#form_submit').unbind('submit') ; //allow to submit form
+                            $("#table-result").css( "visibility", "visible" ); // show table
                         }
                         else
                         {
-                         $("#table-result").css( "visibility", "hidden" );
-                        $('#form_submit').submit(function(event)
+                         $("#table-result").css( "visibility", "hidden" ); // hide table
+                        $('#form_submit').submit(function(event) //because there is errors block form subit
                         {
                             event.preventDefault();
                         }); 
@@ -136,7 +142,7 @@ $( document ).ready( function ()
                        
                     } );
                     
-                    $("#btn-clear-fields").click( function ()
+                    $("#btn-clear-fields").click( function () // clear old values
                     {
                          $('#info_text1').val( "" );
                          $('#info_text2').val( "" );

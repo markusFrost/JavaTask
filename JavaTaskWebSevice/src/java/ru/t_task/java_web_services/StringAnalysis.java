@@ -27,18 +27,6 @@ public class StringAnalysis {
             @WebParam(name = "text5") String text5 
             )
     {
-        /*List<ItemWord> list;
-        
-        ru.t_task.java_web_services.string_analysis.StringProcessing stringProcess = new ru.t_task.java_web_services.string_analysis.StringProcessing( text1, text2, text3, text4, text5 );
-        stringProcess.startProcess();
-        list = stringProcess.getResultList();
-                    
-        DbHelper dbHelper = new DbHelper();       
-        dbHelper.addResult( list );       
-        dbHelper.closeConnection();
-        
-        return list;*/
-        
         StringProcessingManager stringManager = new StringProcessingManager(text1, text2, text3, text4, text5);
         
          Thread t = new Thread( stringManager );
@@ -53,9 +41,7 @@ public class StringAnalysis {
         
         new Thread( dbManager ).start();
         
-        return listResult;
-        
-
+        return listResult;       
 
     }
     
