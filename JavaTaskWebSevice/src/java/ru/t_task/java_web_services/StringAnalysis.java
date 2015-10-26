@@ -10,6 +10,8 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import ru.t_task.java_web_services.db_helper.DbHelper;
 import ru.t_task.java_web_services.models.ItemWord;
+import ru.t_task.java_web_services.objects.DataBaseWorkManager;
+import ru.t_task.java_web_services.objects.StringProcessingManager;
 
 
 
@@ -25,17 +27,33 @@ public class StringAnalysis {
             @WebParam(name = "text5") String text5 
             )
     {
-        List<ItemWord> list;
+        /*List<ItemWord> list;
         
-        ru.t_task.java_web_services.string_analysis.StringAnalysis stringAnalysis = new ru.t_task.java_web_services.string_analysis.StringAnalysis( text1, text2, text3, text4, text5 );
-        stringAnalysis.startAnalysis();
-        list = stringAnalysis.getResultList();
+        ru.t_task.java_web_services.string_analysis.StringProcessing stringProcess = new ru.t_task.java_web_services.string_analysis.StringProcessing( text1, text2, text3, text4, text5 );
+        stringProcess.startProcess();
+        list = stringProcess.getResultList();
                     
         DbHelper dbHelper = new DbHelper();       
         dbHelper.addResult( list );       
         dbHelper.closeConnection();
         
-        return list;
+        return list;*/
+        
+        StringProcessingManager stringManager = new StringProcessingManager(text1, text2, text3, text4, text5);
+        
+         Thread t = new Thread( stringManager );
+        t.start();
+        try {
+            t.join();
+        } catch (InterruptedException ex) {}
+       
+        List<ItemWord> listResult =  stringManager.getList();
+        
+        DataBaseWorkManager dbManager = new DataBaseWorkManager( listResult );
+        
+        new Thread( dbManager ).start();
+        
+        return listResult;
         
 
 

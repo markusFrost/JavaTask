@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 import ru.t_task.java_web_services.models.ItemWord;
 import ru.t_task.java_web_services.objects.Constants;
 
-public class StringAnalysis 
+public class StringProcessing 
 {
     private String text1;
     private String text2;
@@ -22,7 +22,7 @@ public class StringAnalysis
     
     private List<ItemWord> resultList; // output data
 
-    public StringAnalysis(String text1, String text2, 
+    public StringProcessing(String text1, String text2, 
             String text3, String text4, String text5)
     {
         this.text1 = text1;
@@ -38,7 +38,7 @@ public class StringAnalysis
         this.resultList = new ArrayList<>();
     }
     
-    public void startAnalysis()
+    public void startProcess()
     {
         String[] arrayTexts = {
             text1, text2,
